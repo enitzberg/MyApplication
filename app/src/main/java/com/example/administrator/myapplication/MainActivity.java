@@ -109,7 +109,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    currentPlayer = players[position];
+                currentPlayer = players[position];
 
             }
 
@@ -131,7 +131,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
                 currentTeam = teamHashMap.get(teamSpinner.getItemAtPosition(position).toString());
 
-                //newTeamData.setText((CharSequence) currentTeam.getPlayers());
+                if ( currentTeam != null ) {
+                    newTeamData.setText(currentTeam.getPlayers());
+                }
             }
 
             @Override
@@ -183,6 +185,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         if(v == AddPlayer)
         {
             currentTeam.addPlayer(currentPlayer);
+
+            if ( currentTeam != null ) {
+                newTeamData.setText("");
+                newTeamData.setText(currentTeam.getPlayers());
+            }
 
         }
     }
