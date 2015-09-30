@@ -12,20 +12,16 @@ import android.widget.TextView;
 
 public class MainActivity3Activity extends ActionBarActivity implements View.OnClickListener{
 
+    //initialize an array of players on this pre-set team
     ImageButton[] imageButtonsVeg = new ImageButton[6];
     Player[] playersVeg = new Player[6];
-//    ImageButton Tomato;
-//    ImageButton Artichoke;
-//    ImageButton Squash;
-//    ImageButton Carrot;
-//    ImageButton Beat;
-//    ImageButton Lettuce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity3);
 
+        //Set back button to go back to the main activity
         Button BackV = (Button) findViewById(R.id.BackV);
         BackV.setOnClickListener(new View.OnClickListener() {
 
@@ -35,6 +31,8 @@ public class MainActivity3Activity extends ActionBarActivity implements View.OnC
             }
         });
 
+        //initialize every button to correspond to a player on the team and display
+        //the picture of each player selected.
         imageButtonsVeg[0] = (ImageButton) findViewById(R.id.Tomato);
         imageButtonsVeg[0].setBackgroundResource(R.mipmap.tomato);
         playersVeg[0] = new Player("Tomato", "Sweet", 17, "Goalie", 0, "Charlott, NC");
@@ -92,6 +90,8 @@ public class MainActivity3Activity extends ActionBarActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
+        //Iterate through all of the players to find the
+        //corresponding player that is selected.
         int j;
         for (j = 0; j < imageButtonsVeg.length; j++) {
             if (imageButtonsVeg[j] == v) {
@@ -99,12 +99,14 @@ public class MainActivity3Activity extends ActionBarActivity implements View.OnC
             }
         }
 
+        //Player that the user selected.
         Player thisPlayer = playersVeg[j];
         displayData(thisPlayer);
     }
 
     private void displayData(Player thisPlayer) {
 
+        //Display all of the stats that correspond to the player selected.
         TextView FirstNameVeg = (TextView)findViewById(R.id.FirstName);
         FirstNameVeg.setText("First Name:  " + thisPlayer.getFirstName());
 

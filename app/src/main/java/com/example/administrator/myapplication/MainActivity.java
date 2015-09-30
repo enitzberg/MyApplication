@@ -17,9 +17,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+//ALL IMAGES ARE TAKEN FROM GOOGLE.COM/IMAGES
+//15 images total:
+//              seven vegetables
+//              seven fruit
+//              one soccer field
+//
+//Reference log entries word document is included in the
+//assignment2 zip file.
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
+    //initializing all instance variables.
     Button createTeam;
     Button AddPlayer;
     TextView iTeamName;
@@ -38,6 +47,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Each time player selects a pre-set team, the corresponding
+        //activity will be reached.
         ImageButton Fruit = (ImageButton)findViewById(R.id.Fruit);
         Fruit.setBackgroundResource(R.mipmap.teamfruit);
         Fruit.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +69,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             }
         });
 
+        //initializing the widgets on the current activity.
         newTeamData = (TextView)findViewById(R.id.newTeamData);
         teamHashMap = new HashMap<String, Team>();
 
@@ -67,10 +79,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         createTeam.setOnClickListener(this);
         iTeamName = (EditText)findViewById(R.id.iTeamName);
 
+
         playerSpinner = (Spinner)findViewById(R.id.PlayerSpinner);
         teamSpinner = (Spinner)findViewById(R.id.teamSpinner);
 
-
+        //Creating a list of player objects that will appear within the
+        //players to add spinner as a user creates a new team.
         players[0] = new Player("Apple", "Red", 2, "Goalie", 1, "Minneapolis, MN");
         players[1] = new Player("Banana", "Yellow", 24, "Sweeper", 2, "Miami, FL");
         players[2] = new Player("Cherry", "Pink", 6, "Wing-Back", 0, "Isla Vista, CA");
@@ -84,6 +98,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         players[10] = new Player("Beat", "Em", 35, "Midfielder", 2, "New Orleans, LA");
         players[11] = new Player("Lettuce", "Beachu", 47, "Forward", 6, "Chicago, IL");
 
+        //need to add the names of all players to the array list
+        //that will appear on the screen when spinner is selected.
         newTeam = new ArrayList<>();
         newTeam.add(players[0].getFirstName()+" "+players[0].getLastName());
         newTeam.add(players[1].getFirstName()+" "+players[1].getLastName());
@@ -101,6 +117,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         newTeamName = new ArrayList<>();
         newTeamName.add("<Choose Team>");
 
+        //need to create a new adapter for each spinner, with a corresponding onItemSelectedListener
+        //that is unique to each inidvidual spinner.
         ArrayAdapter<String> playerAdap = new ArrayAdapter<>(this,android.R.layout.simple_dropdown_item_1line, newTeam);
         playerSpinner.setAdapter(playerAdap);
 
@@ -121,6 +139,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         playerSpinner.setOnItemSelectedListener(playerSpin);
 
+        //need to create a new adapter for each spinner, with a corresponding onItemSelectedListener
+        //that is unique to each inidvidual spinner.
         ArrayAdapter<String> teamAdap = new ArrayAdapter<>(this,android.R.layout.simple_dropdown_item_1line, newTeamName);
         teamSpinner.setAdapter(teamAdap);
 
@@ -169,6 +189,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        //Add a new team if the team name is one that is not already defined.
         if(v == createTeam)
         {
 
@@ -182,6 +203,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             }
         }
 
+        //Display the name of the players on the screen when a particular
+        //team is chosen.
         if(v == AddPlayer)
         {
             currentTeam.addPlayer(currentPlayer);

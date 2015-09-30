@@ -5,6 +5,7 @@ package com.example.administrator.myapplication;
  */
 public class Player {
 
+    //initializing all assets of the player class.
     protected String firstName;
     protected String lastName;
     protected int uniformNumber;
@@ -14,6 +15,7 @@ public class Player {
 
 public Player (String firstname, String lastName, int uniformNumber, String position, int goalsScored, String hometown)
 {
+    //Setting all assets of the player class.
     this.firstName = firstname;
     this.lastName = lastName;
     this.uniformNumber = uniformNumber;
@@ -22,6 +24,9 @@ public Player (String firstname, String lastName, int uniformNumber, String posi
     this.hometown = hometown;
 
 }
+
+    //Get functions that allow for accessing the information for
+    //each player
     public String getFirstName()
     {
         return firstName;

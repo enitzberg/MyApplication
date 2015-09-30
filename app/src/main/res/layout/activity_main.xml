@@ -89,6 +89,14 @@
                     android:layout_alignRight="@+id/teamselection"
                     android:layout_alignEnd="@+id/teamselection" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:background="@mipmap/soccerfield"
+                    android:minWidth="170dp"
+                    android:minHeight="80dp" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -100,13 +108,15 @@
             android:minWidth="400dp"
             android:maxWidth="500dp"
             android:maxHeight="420dp"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="20dp"
+            android:textSize="17dp" />
 
     </LinearLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right">
 
         <LinearLayout
             android:orientation="vertical"
